@@ -378,9 +378,9 @@ struct Earthquake : Codable {
         
     }
   
-    static func allEarthQuakes(StartTime: String, EndTime : String, completionHandler: @escaping (Earthquage?, Error?) -> Void) {
+    static func allEarthQuakes(StartTime: String, EndTime : String, completionHandler: @escaping (Earthquake?, Error?) -> Void) {
         
-        let endpoint = Earthquage.endpointForEarthQuakes(starttime: StartTime, endtime: EndTime)
+        let endpoint = Earthquake.endpointForEarthQuakes(starttime: StartTime, endtime: EndTime)
         guard let url = URL(string: endpoint) else {
             print("Error: cannot create URL")
             let error = BackendError.urlError(reason: "Could not construct URL")
@@ -408,8 +408,8 @@ struct Earthquake : Codable {
             let decoder = JSONDecoder()
             
             do {
-                let earthquage = try decoder.decode(Earthquage.self, from: responseData)
-                completionHandler(earthquage, nil)
+                let earthquake = try decoder.decode(Earthquake.self, from: responseData)
+                completionHandler(earthquake, nil)
                 
             } catch {
                 print("error trying to convert data to JSON")

@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
     
     let regionRadius: CLLocationDistance! = 1000
     
-    var earthQuage : Earthquage!
+    var earthQuage : Earthquake!
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)

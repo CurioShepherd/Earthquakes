@@ -14,7 +14,7 @@ class TableViewController: UITableViewController {
     
     //var newDict : NSMutableDictionary = NSMutableDictionary()
     
-    static let earthQuege : Earthquage = Earthquage()
+    static let earthQuege : Earthquake = Earthquake()
     
     var starttime : String? = ""
     var endtime : String? = ""
@@ -27,7 +27,7 @@ class TableViewController: UITableViewController {
         
         //Earthquage.allEarthQuakes(startTime: dateFormatter.string(from: startTime),
         //                          endTime: dateFormatter.string(from: endTime)) { (earthQuage, error) in
-        Earthquage.allEarthQuakes(StartTime: startTime,
+        Earthquake.allEarthQuakes(StartTime: startTime,
                                   EndTime: endTime, completionHandler: { (earthQuage, error) in
             if let error = error {
                 // got an error in getting the data
@@ -59,19 +59,17 @@ class TableViewController: UITableViewController {
         
         MyArray = [["Anna","11"], ["Sanna","8"], ["Sari","9"], ["Katja","4"],["Liisa","5"],["Marja","9"]]
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         if (starttime != "" && endtime != "") {
-            tableView.register(UINib.init(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCellID")
-            //tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCellID")
+            //tableView.register(UINib.init(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCellID")
+            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCellID")
             
             getAllEarthQuakes(startTime: starttime!, endTime: endtime!)
         }
     }
-    
-    /*
-    override func viewWillAppear(_ animated: Bool) {
-        getAllEarthQuakes(startTime: starttime, endTime: endtime)
-    }
- */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -99,7 +97,7 @@ class TableViewController: UITableViewController {
         cell.nameEarthQuake?.text = MyArray[indexPath.row][0];
         cell.magnitudeEarthQuake?.text = MyArray[indexPath.row][1];
 
-        cell.textLabel?.text = "Dummy Text"
+        //scell.textLabel?.text = "Dummy Text"
         return cell
     }
     
